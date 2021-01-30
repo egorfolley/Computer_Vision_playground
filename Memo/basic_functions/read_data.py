@@ -1,6 +1,7 @@
 import cv2 as cv
 import numpy as np
 from basic_functions.rescaling import rescale_frame
+from basic_functions.helpers import show_img
 
 
 def read_img(img_path: str,
@@ -28,9 +29,7 @@ def read_img(img_path: str,
         # Matrix concatenation
         img = np.hstack((img, gray_BGR))
 
-    cv.imshow('Image', img)
-    cv.waitKey(0)
-    cv.destroyAllWindows()
+    show_img('Image', img)
 
 def read_video(vid_path: str = None,
                scale: float = 0.0,
@@ -61,8 +60,8 @@ def read_video(vid_path: str = None,
             gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
             gray_BGR = cv.cvtColor(gray, cv.COLOR_GRAY2BGR)
 
-
             frame = np.hstack((frame, gray_BGR))
+
         cv.imshow("Video", frame)
 
         if cv.waitKey(20) & 0xFF == ord('q'):
