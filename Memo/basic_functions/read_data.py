@@ -1,6 +1,6 @@
 import cv2 as cv
 import numpy as np
-from basic_functions.rescaling import rescale_frame
+from basic_functions.transformations import rescale_frame
 from basic_functions.helpers import show_img
 
 
@@ -29,7 +29,7 @@ def read_img(img_path: str,
         # Matrix concatenation
         img = np.hstack((img, gray_BGR))
 
-    show_img('Image', img)
+    show_img(img, 'Image')
 
 def read_video(vid_path: str = None,
                scale: float = 0.0,
